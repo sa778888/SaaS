@@ -1,10 +1,18 @@
-import { ClerkProvider } from '@clerk/nextjs'
 import React from 'react'
-import { dark } from '@clerk/themes'
+import Sidebar from '@/components/sidebar'
+import InfoBar from '@/components/infobar'
 
-const Layout = ({ children }: { children: React.ReactNode }) => {
+type Props = { children: React.ReactNode }
+
+const Layout = (props: Props) => {
   return (
-    <ClerkProvider appearance={{ baseTheme: dark }}>{children}</ClerkProvider>
+    <div className="flex overflow-hidden h-screen">
+      <Sidebar />
+      <div className="w-full">
+        <InfoBar />
+        {props.children}
+      </div>
+    </div>
   )
 }
 
